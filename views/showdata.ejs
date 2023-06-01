@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form method="post">
+        <div>
+            <h1>Insert Pdf</h1>
+            <div>
+                <input type="file" name="insertpdf" id="insertpdf">
+            </div>
+            <input type="button" value="submit" onclick="handleClick()">
+        </div>
+    </form>
+    <button id="downloadBtn" onclick="window.open('http://localhost:5000/api/v1/getdata')">Download</button>
+    <script>
+        let data = null
+        const handlefile = document.getElementById('insertpdf');
+        handlefile.addEventListener('change', (e) => {
+            data = e.target.files[0]
+        })
+
+        const handleClick = async () => {
+            const Formdata = new FormData()
+            let url = 'http://localhost:5000/api/v1/insertpdf'
+            if (data !== null) {
+                Formdata.append('insertpdf', data)
+                const config = {
+                    method: 'POST',
+                    body: Formdata,
+                }
+                const response = await fetch(url, config)
+                document.getElementById('insertpdf').value = ""
+            }
+        }
+
+        // const handledownload = async () => {
+            
+        //     let url = 'http://localhost:5000/api/v1/getdata'
+        //     console.log()
+        //     // if (data !== null) {
+        //         console.log('asdasd')
+        //         const config = {
+        //             method: 'GET',
+        //             Headers: {
+        //                 'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        //                 'Content-Disposition': 'attachment; filename=example.xlsx'
+        //             }
+        //         }
+        //         const response = await fetch(url, config)
+        //             .then(response => {
+        //                 console.log('downlaod success');
+        //             }).catch(err => {
+        //                 console.log(err);
+        //             })
+        //         // console.log(response)
+        //     // }
+        // }
+
+        // const downloadBtn = document.getElementById('downloadBtn');
+        // downloadBtn.addEventListener('click', handledownload);
+    </script>
+</body>
+
+</html>
