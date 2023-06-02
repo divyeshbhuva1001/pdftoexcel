@@ -3,7 +3,7 @@ const dbConfig = require("../config/mysql");
 const Sequelize = require("sequelize");
 
 const connection = new Sequelize({
-  dialect: 'mysql',
+  dialect: 'postgresql',
   host: process.env.MYSQL_HOSTNAME,
   username: process.env.MYSQL_USERNAME,
   password: process.env.MYSQL_PASSWORD,
