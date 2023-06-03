@@ -44,7 +44,6 @@ module.exports.insertpdf = async (req, res) => {
 }
 
 module.exports.GetData = async (req, res) => {
-  // try {
 
     const data = await datamodel.findAll({})
 
@@ -53,9 +52,7 @@ module.exports.GetData = async (req, res) => {
       const workbook = new ExcelJS.Workbook();
       const worksheet = workbook.addWorksheet('Sheet 1');
 
-      let array = []
-
-      let output = data[0].insertpdf
+      let output = data[data.length - 1].dataValues.insertpdf
       const lines = output.split('\n');
       const word1 = 'Profile Applicability: ';
       const word2 = 'Description: ';
@@ -108,12 +105,12 @@ module.exports.GetData = async (req, res) => {
       })
 
       worksheet.columns = [
-        { header: 'Name', key: 'profile_applicability', width: 45 },
-        { header: 'Description', key: 'Description', width: 45 },
-        { header: 'Rationale', key: 'Rationale', width: 45 },
-        { header: 'Audit', key: 'Audit', width: 45 },
-        { header: 'Remediation', key: 'Remediation', width: 45 },
-        { header: 'title', key: 'title', width: 45 },
+        { header: 'Name', key: 'profile_applicability', width: 60 },
+        { header: 'Description', key: 'Description', width: 200 },
+        { header: 'Rationale', key: 'Rationale', width: 250 },
+        { header: 'Audit', key: 'Audit', width: 250 },
+        { header: 'Remediation', key: 'Remediation', width: 250 },
+        { header: 'title', key: 'title', width: 100 },
       ];
 
       setNewData.forEach(item => {

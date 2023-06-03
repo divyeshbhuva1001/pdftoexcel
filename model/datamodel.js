@@ -3,7 +3,7 @@ const sequelize = require('./sequelize')
 
 const datamodel = sequelize.define("pdfdata", {
     insertpdf: {
-        type: DataTypes.TEXT('long')
+        type: DataTypes.TEXT
     },
 });
 

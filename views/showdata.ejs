@@ -18,7 +18,7 @@
             <input type="button" value="submit" onclick="handleClick()">
         </div>
     </form>
-    <button id="downloadBtn" onclick="window.open('http://localhost:5000/api/v1/getdata')">Download</button>
+    <button id="downloadBtn" onclick="window.open('http://localhost:5252/api/v1/getdata')">Download</button>
     <script>
         let data = null
         const handlefile = document.getElementById('insertpdf');
@@ -28,7 +28,7 @@
 
         const handleClick = async () => {
             const Formdata = new FormData()
-            let url = 'http://localhost:5000/api/v1/insertpdf'
+            let url = 'http://localhost:5252/api/v1/insertpdf'
             if (data !== null) {
                 Formdata.append('insertpdf', data)
                 const config = {
@@ -42,7 +42,7 @@
 
         // const handledownload = async () => {
             
-        //     let url = 'http://localhost:5000/api/v1/getdata'
+        //     let url = 'http://localhost:5252/api/v1/getdata'
         //     console.log()
         //     // if (data !== null) {
         //         console.log('asdasd')

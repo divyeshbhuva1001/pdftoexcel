@@ -3,12 +3,12 @@ const dbConfig = require("../config/mysql");
 const Sequelize = require("sequelize");
 
 const connection = new Sequelize({
-  dialect: 'postgresql',
+  dialect: 'postgres',
   host: process.env.MYSQL_HOSTNAME,
   username: process.env.MYSQL_USERNAME,
   password: process.env.MYSQL_PASSWORD,
   database: process.env.MYSQL_DATABASE,
-  port: 3307,
+  // port: 3307,
   pool: {
     max: 5,
     min: 0,
